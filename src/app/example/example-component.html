@@ -1,0 +1,175 @@
+<!doctype html>
+
+<!--<link href="node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet"> -->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<body class="mat-app-background">
+<img src="http://www.premera.com/images/shared/logos/logo_pbc.svg" alt="Premera logo" width="221" height="60">
+<p></p>
+<h1>Submit Vision Claims</h1>
+
+<mat-horizontal-stepper [linear]="isLinear">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Date of Service</ng-template>
+		<h2>Enter date of service</h2>
+		<p>Did the member have services on multiple dates from the same provider?</p>
+		<mat-radio-group>
+  			<p><mat-radio-button value="1">Yes</mat-radio-button></p>
+			<p><mat-radio-button value="2">No</mat-radio-button></p>
+		</mat-radio-group>
+
+		<p>Enter the oldest and most recent dates of service. It won't be necessary to enter every date of service. Services must be from the same <strong>provider</strong>, for the same <strong>member</strong>, and <strong>within 12 months</strong> of the date of service to submit on one form.</p>
+		
+		<mat-form-field>
+  			<input matInput [matDatepicker]="picker" placeholder="Oldest date of Service" required>
+  			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  			<mat-datepicker #picker></mat-datepicker>
+		</mat-form-field>
+		
+		<mat-form-field>
+  			<input matInput [matDatepicker]="recentpicker" placeholder="Most recent date of Service" required>
+  			<mat-datepicker-toggle matSuffix [for]="recentpicker"></mat-datepicker-toggle>
+  			<mat-datepicker #recentpicker></mat-datepicker>
+		</mat-form-field>
+		
+      <div>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Member</ng-template>
+		<h2>Who is this claim for?</h2>
+			<p>Select family member</p>
+
+		<mat-form-field>
+   	 		<mat-select placeholder="Select" >
+     			<mat-option value="option">Arturo Johnson (1/15/2004)</mat-option>
+				<mat-option value="option">Amy Johnson (12/1/1984)</mat-option>
+				<mat-option value="option">Isabel Fredericks-Johnson (8/13/2007)</mat-option>
+				<mat-option value="option">Jon Johnson (10/5/1973)</mat-option>
+    		</mat-select>
+  	  	</mat-form-field>
+	
+		<p>Does the member have coverage from any other health plan?</p>
+			<mat-radio-group>
+				<p><mat-radio-button value="1">Yes</mat-radio-button></p>
+				<p><mat-radio-button value="2">No</mat-radio-button></p>
+			</mat-radio-group>
+      <p></p>
+		<div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+	  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Attachments</ng-template>
+		<h2>Attach files</h2>
+		  	<p><strong>Itemized bills</strong></p>
+			<p>Submit an itemized bill containing:</p>
+				<ul>
+					<li>Name of the member</li>
+					<li>Name and address of the provider</li>
+					<li>Date of service</li>
+					<li>Itemized charges for all services and items purchased</li>		
+				</ul>
+
+		<!-- Angular Material Table - content is in the TS file-->
+		
+		<div class="example-container mat-elevation-z8">
+  			<mat-table #table [dataSource]="dataSource" matSort>
+				
+			
+				   <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> File name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Size </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Remove </mat-header-cell>
+      <mat-cell *matCellDef="let element"><mat-icon>delete</mat-icon> </mat-cell>
+    </ng-container>
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		  </mat-table>
+		</div>
+		
+		<p>4MB remaining</p>
+		<p>
+		    <button mat-button matAttachFiles>Attach additional files</button>
+		</p>
+		<p><i>Upload supporting documents up to a maximum of 10MB. Please don't modify the itemized bill as it could delay claim processing.</i></p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+	  <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>Details</ng-template>
+		<h2>Additional details</h2>
+		<p><strong>What services were performed?</strong></p>
+		
+		<p><mat-checkbox>Routine eye exam</mat-checkbox></p>
+		<p><mat-checkbox>Vision hardware</mat-checkbox></p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+	
+  <mat-step>
+    <ng-template matStepLabel>Review</ng-template>
+  
+  <h3>Review and submit</h3>
+  <h4>Claim summary</h4>
+	<h5>Dates of Service</h5>
+	  <p>02/01/17 - 05/07/2017</p>
+	
+	<h5>Family member</h5>
+	  <p>Isabel Fredericks-Johnson</p>
+	
+		<h5>Claim details</h5>
+	  <p>Service provided: Routine exam</p>
+	
+		<h5>Files</h5>
+	  <p>Dr Jones Explanation of Benefits</p>
+	  <p>Dr Jones Bill Feb 1</p>
+	  <p>Dr Jones Bill May 7</p>
+	  
+	  <h2>Agreement</h2>
+	  
+	 <mat-checkbox><strong>I have read and agree to the following statement:</strong> </mat-checkbox>
+	  <i>It is a crime to knowingly provide false, incomplete, or misleading information to an insurance company for the purpose of defrauding the company. Penalties include imprisonment, fines, and denial of insurance benefits.</i>
+
+  	<p></p>
+	  	<div>
+			<p></p>
+      		<button mat-button matStepperPrevious>Back</button>
+	  		<button mat-raised-button matStepperNext>Submit</button>
+    	</div>
+	
+  </mat-step>
+</mat-horizontal-stepper>
+</body>

@@ -1,0 +1,202 @@
+
+//@import '@angular/material/prebuilt-themes/deeppurple-amber.css';  /* Does not appear to be working */
+
+.mat-step-label {
+	font: {
+		size: 1.5rem;
+		font-weight: 400;
+		color: #404144;
+	}
+}
+
+.mat-input-wrapper {
+	width: 350px;	
+}
+
+.mat-button {
+	color: #dd6162;
+}
+
+
+.mat-step-icon {
+	background-color: #dd6162;
+}
+
+/*.mat-step-header {
+	background-color: #dd6162;
+}*/
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-select-style > {
+  width: 100%;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
+}
+
+p {
+	max-width: 700px;
+	padding-left: 10px;
+}
+
+.mat-checkbox-label {
+	max-width: 700px;
+	padding: 10px;
+}
+
+.mat-checkbox {
+	padding-left: 10px;
+}
+
+/*
+body {background-color: #ffffff;
+	margin: 10px;
+
+} */
+
+
+
+form {
+	padding: 10px;
+	
+}
+
+/* Premviz scss content edited */
+
+
+body {background-color: #ffffff;
+	margin: 0px;
+	font-size: 1rem;
+}
+
+form {
+	padding: 10px;
+	
+}
+
+#colorstrip{ /* Snaps to Ankit's style guide */
+	width: 100%;
+	height: 430px;
+	border-style: solid;
+	border-color: #f5f5f5;
+	background-color: #f5f5f5;
+}
+
+
+h1 {color: #313234; /* Snaps to latest Premera CSS */
+	font-size: 2.441rem;
+	font-family: "Lora Regular";
+	font-weight: 400;
+	line-height: inherit;
+	padding: 10px;
+}
+
+h2 {color: #313234;
+	font-size: 1.953rem;
+	font-family: "Lora Regular";
+	font-weight: 400;
+	line-height: inherit;
+	padding: 10px;
+}
+
+h3 {color: #313234;
+	font-size: 1.563rem;
+	font-family: "Lora Regular";
+	font-weight: 400;
+	line-height: inherit;
+	padding: 10px;
+}
+
+h4 {color: #313234;
+	font-size: 1.25rem;
+	font-family: 'Roboto Light';
+	font-weight: 400;
+	line-height: inherit;
+	padding: 10px;
+}
+
+h5 {color: #313234;
+	font-size: 1.0rem;
+	font-family: 'Roboto Light';
+	font-weight: 400;
+	line-height: inherit;
+	padding: 10px;
+}
+
+body1 {color: #404144;
+	font-size: 1rem;
+	font-family: 'Roboto Light';
+	font-weight: 300;
+	line-height: inherit;
+	padding: 10px;
+}
+
+	.background-color {
+		color: #ff7c76;
+}
+
+	.panels {
+  		padding: 8px;
+  		border: 1px solid #ccc;
+  		border-radius: 4px;
+  		margin-top: 8px;
+}
+
+	.panel {
+  		display: none;
+  		&.active {
+    	display: block;
+  		}
+	}
+
+// trying themes
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+
+// Define the default theme (same as the example above).
+$candy-app-primary: mat-palette($mat-orange, 900);
+$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent);
+
+// Include the default theme styles.
+@include angular-material-theme($candy-app-theme);
+
+
+// Define an alternate dark theme.
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+// Include the alternative theme styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+.unicorn-dark-theme {
+  @include angular-material-theme($dark-theme);
+}
+
+.mat-raised-button {
+	color: #ffffff;
+	background-color: #dd6162;
+}

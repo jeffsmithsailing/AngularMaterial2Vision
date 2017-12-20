@@ -1,0 +1,56 @@
+@import '~@angular/material/theming/';
+$premera: (
+  50: #0099d8,
+  100: #0099d8,
+  200: #0099d8,
+  300: #0099d8,
+  400: #0099d8,
+  500: #0099d8,
+  600: #0099d8,
+  700: #0099d8,
+  800: #0099d8,
+  900: #0099d8,
+  A100: #0099d8,
+  A200: #0099d8,
+  A400: #0099d8,
+  A700: #0099d8,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: $black-87-opacity,
+  )
+);
+
+
+$premera-primary: mat-palette($premera,800);
+$premera-accent:  mat-palette($mat-cyan);
+$premera-warn: mat-palette($mat-red,600);
+$premera-theme: mat-light-theme($premera-primary, $premera-accent, $premera-warn);
+
+@include mat-core();
+
+$secondary-primary: mat-palette($mat-blue,800);
+$secondary-accent:  mat-palette($mat-cyan,400);
+$secondary-warn: mat-palette($mat-pink);
+$secondary-theme: mat-dark-theme($secondary-primary, $secondary-accent, $secondary-warn);
+$secondary-background: map-get($secondary-theme, background);
+$secondary-foreground: map-get($secondary-theme, foreground);
+
+// Default Theme
+@include angular-material-theme($premera-theme);
+
+// Dark Theme
+.premera-secondary {
+  @include angular-material-theme($secondary-theme);
+}
